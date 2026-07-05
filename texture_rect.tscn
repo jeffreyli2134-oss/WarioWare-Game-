@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b7n7frny6jbly"]
+
+[ext_resource type="Texture2D" uid="uid://bdtbmst27yrvk" path="res://minimalist_space_4k_by_soefati_dctmc8i-fullview.jpg" id="1_s0p3g"]
+[ext_resource type="FontFile" uid="uid://bl4dhq52ic4mf" path="res://SpaceGrotesk-VariableFont_wght.ttf" id="2_ek34n"]
+
+[sub_resource type="Animation" id="Animation_1tmsk"]
+resource_name = "Blink"
+length = 1.6333333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.2587854),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.6745098), Color(1, 1, 1, 0.35686275), Color(1, 1, 1, 0.87058824)]
+}
+
+[sub_resource type="Animation" id="Animation_rr6jd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm4kx"]
+_data = {
+&"Blink": SubResource("Animation_1tmsk"),
+&"RESET": SubResource("Animation_rr6jd")
+}
+
+[node name="TitleScreen" type="Control" unique_id=1844572352]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=729448508]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_s0p3g")
+expand_mode = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=149204734]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 519.0
+offset_right = 808.0
+offset_bottom = 586.0
+theme_override_fonts/normal_font = ExtResource("2_ek34n")
+theme_override_font_sizes/normal_font_size = 40
+text = "Press any key to start "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RichTextLabel2" unique_id=1459564115]
+libraries/ = SubResource("AnimationLibrary_qm4kx")
+autoplay = &"Blink"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=896262060]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 64.0
+offset_right = 873.0
+offset_bottom = 210.0
+theme_override_fonts/normal_font = ExtResource("2_ek34n")
+theme_override_font_sizes/normal_font_size = 108
+text = "APHELION"
